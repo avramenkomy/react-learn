@@ -8,7 +8,7 @@ function AlertToast() {
   return (
     <div className="toast-container">
       <Toast
-        className="text-black bg-warning position-fixed bottom-0 end-0"
+        className="text-black text-center bg-warning position-fixed bottom-0 end-0"
         show={showToast.show}
         onClose={toggleShowToast}
       >
