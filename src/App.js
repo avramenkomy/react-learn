@@ -18,13 +18,16 @@ function App() {
     id: null,
     name: '',
   });
+
   const [showToast, setShowToast] = useState({
     show: false,
     msg: '',
   });
+
   const toggleHideToast = () => {
     setShowToast({...showToast, show: false, msg: '' });
   };
+
   const toggleShowToast = (msg='') => {
     setShowToast({...showToast, show: true, msg: msg });
     setTimeout(toggleHideToast, 3000);
@@ -33,6 +36,7 @@ function App() {
   const handleClose = () => {
     setShow({...show, show: false})
   };
+
   const handleShow = (data) => {
     setShow({...show, show: true, id: data.id, name: data.name});
   };
@@ -60,8 +64,8 @@ function App() {
 
   return (
     <Context.Provider value={{
-      removeData,
       tableData,
+      removeData,
       addData,
       editData,
       show,

@@ -44,9 +44,9 @@ function TableRow({ data }) {
 
   return (
     <tr className="table-light align-middle">
-      <td className="gx-5">
-        <Button variant="warning" onClick={() => handleShow(data)}><Pensil/></Button>
-        <button className="btn btn-danger ml2" onClick={() => removeData(data.id) }><Trash/></button>
+      <td>
+        <Button className="mr-2" variant="warning" onClick={() => handleShow(data)}><Pensil/></Button>
+        <Button className="ml-2" variant="danger" onClick={() => removeData(data.id) }><Trash/></Button>
       </td>
       <td>{data.id}</td>
       <td>{data.name}</td>
