@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {Button, Modal, CloseButton} from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import Context from "../../context";
 
-import Alert from "../Alert";
+import AlertToast from "../Toasts/AlertToast";
 
 function EditTableModal() {
-  const { show, handleClose, openAlert, editData } = useContext(Context);
+  const { show, handleClose, toggleShowToast, editData } = useContext(Context);
 
   const [editDataRow, setEditDataRow] = useState('');
 
@@ -18,7 +18,7 @@ function EditTableModal() {
       }
       editData(newDataRow);
     } else {
-      openAlert('Поле не должно быть пустым')
+      toggleShowToast('Поле не должно быть пустым');
     }
     setEditDataRow('');
   }
@@ -49,7 +49,7 @@ function EditTableModal() {
        </form>
      </Modal.Body>
      <Modal.Footer>
-       <Alert />
+       <AlertToast />
      </Modal.Footer>
    </Modal>
  )

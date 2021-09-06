@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import Context from './context';
 import Table from "./components/Table/Table";
 import AddData from "./components/Table/AddData";
-import Alert from "./components/Alert";
 import EditTableModal from './components/Modals/EditTableModal';
+import AlertToast from "./components/Toasts/AlertToast";
 
 function App() {
 
@@ -12,15 +12,23 @@ function App() {
     { id: 1, name: 'First'},
     { id: 2, name: 'Second'},
   ]);
-  const [ alertProps, setAlertProps] = useState({
-    alertView: false,
-    msg: '',
-  });
+
   const [show, setShow] = useState({
     show: false,
     id: null,
     name: '',
   });
+  const [showToast, setShowToast] = useState({
+    show: false,
+    msg: '',
+  });
+  const toggleHideToast = () => {
+    setShowToast({...showToast, show: false, msg: '' });
+  };
+  const toggleShowToast = (msg='') => {
+    setShowToast({...showToast, show: true, msg: msg });
+    setTimeout(toggleHideToast, 3000);
+  };
 
   const handleClose = () => {
     setShow({...show, show: false})
@@ -34,7 +42,6 @@ function App() {
   }
 
   function editData(newDataRow) {
-    // console.log('изменение записи', newDataRow);
     setTableData(tableData
       .filter(row => row.id !== newDataRow.id)
       .concat([newDataRow])
@@ -51,27 +58,19 @@ function App() {
     ]));
   }
 
-  function openAlert(msg) {
-    setAlertProps({...alertProps, alertView: true, msg: msg });
-    setTimeout(() => {
-      setAlertProps({...alertProps, alertView: false, msg: '' });
-    }, 2000);
-  }
-
   return (
     <Context.Provider value={{
       removeData,
       tableData,
       addData,
       editData,
-      openAlert,
-      alertProps,
       show,
       handleShow,
       handleClose,
+      showToast,
+      toggleShowToast,
     }}>
       <div className="App container">
-        <Alert />
         <h1><span className="badge bg-secondary">Welcome to React</span></h1>
         <AddData />
         { tableData.length
@@ -83,6 +82,7 @@ function App() {
           )
         }
         <EditTableModal />
+        <AlertToast />
       </div>
     </Context.Provider>
   );

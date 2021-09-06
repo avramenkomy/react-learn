@@ -4,7 +4,7 @@ import Context from "../../context";
 
 function AddData() {
   const [dataRow, setDataRow] = useState('');
-  const { addData, openAlert } = useContext(Context);
+  const { addData, toggleShowToast } = useContext(Context);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -12,7 +12,8 @@ function AddData() {
     if (dataRow.trim()) {
       addData(dataRow);
     } else {
-      openAlert('Поле не должно быть пустым');
+      // openAlert('Поле не должно быть пустым');
+      toggleShowToast('Поле не должно быть пустым');
     }
     setDataRow('');
   }
