@@ -5,6 +5,7 @@ import Table from "./components/Table/Table";
 import AddData from "./components/Table/AddData";
 import EditTableModal from './components/Modals/EditTableModal';
 import AlertToast from "./components/Toasts/AlertToast";
+import ButtonTest from "./components/TestsComponents/ButtonTest";
 
 function App() {
 
@@ -87,6 +88,7 @@ function App() {
         }
         <EditTableModal />
         <AlertToast />
+        <ButtonTest />
       </div>
     </Context.Provider>
   );

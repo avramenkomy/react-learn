@@ -10,7 +10,7 @@ function Table() {
 
   return (
     <div>
-      <h2>Table component</h2>
+      <h2 className="table-title">Table component</h2>
       <table className="table table-sm">
         <TableHead />
         <tbody>

@@ -45,8 +45,8 @@ function TableRow({ data }) {
   return (
     <tr className="table-light align-middle">
       <td>
-        <Button className="mr-2" variant="warning" onClick={() => handleShow(data)}><Pensil/></Button>
-        <Button className="ml-2" variant="danger" onClick={() => removeData(data.id) }><Trash/></Button>
+        <Button className="mr-2 editBtn" variant="warning" onClick={() => handleShow(data)}><Pensil/></Button>
+        <Button className="ml-2 deleteBtn" variant="danger" onClick={() => removeData(data.id) }><Trash/></Button>
       </td>
       <td>{data.id}</td>
       <td>{data.name}</td>
@@ -54,8 +54,8 @@ function TableRow({ data }) {
   )
 }
 
-TableRow.propTypes = {
-  data: propTypes.object.isRequired,
-}
+// TableRow.propTypes = {
+//   data: propTypes.object.isRequired,
+// }
 
 export default TableRow;
